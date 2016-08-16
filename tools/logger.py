@@ -3,7 +3,6 @@ import logging
 import sys
 from datetime import date
 import __main__
-import string
 
 # local imports
 from constants import FORMATTER, LOGGING_LEVEL
@@ -11,7 +10,7 @@ from constants import FORMATTER, LOGGING_LEVEL
 
 def get_logger(dir, name, level=LOGGING_LEVEL, formatter=FORMATTER):
     # create log name stripping any non-alphanumeric chars
-    filename = ''.join(ch for ch in string.printable if ch.isalnum())
+    filename = ''.join(ch for ch in name if ch.isalnum())
     # Create the logger object
     logger = logging.getLogger(name)
     fhdlr = logging.FileHandler('%s/%s-%s.log' % (dir, filename, date.today()))
